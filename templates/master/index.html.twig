@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Master!{% endblock %}
+
+{% block body %}
+
+    <h1>  List of Masters ✅</h1>
+
+    {% for master in masters %}
+    {{master.name}} {{master.surname}} 
+    <a href="{{path('master_edit', {id: master.id})}}"> Edit Master </a> <br>
+    <form action="{{path('master_delete', {id: master.id})}}" method="POST"> 
+        <button type="sumbit" >DELETE</button>
+    </form>
+
+    {% endfor %}
+    
+
+
+
+{% endblock %}
