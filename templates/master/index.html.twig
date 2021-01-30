@@ -6,16 +6,20 @@
 
     <h1>  List of Masters ✅</h1>
 
+LIST: 
+<ul>
     {% for master in masters %}
-    {{master.name}} {{master.surname}} 
-    <a href="{{path('master_edit', {id: master.id})}}"> Edit Master </a> <br>
+    {{master.name}} {{master.surname}}
+    <a href="{{path('master_edit', {id: master.id})}}"> Edit </a> <br>
     <form action="{{path('master_delete', {id: master.id})}}" method="POST"> 
         <button type="sumbit" >DELETE</button>
     </form>
+    {% for outfit in master.outfits %}
+        {{outfit.type}} <br>
+        
+    {% endfor %}
 
     {% endfor %}
-    
-
-
-
+   </ul> 
 {% endblock %}
+    

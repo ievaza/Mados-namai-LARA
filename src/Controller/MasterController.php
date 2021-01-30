@@ -16,6 +16,7 @@ class MasterController extends AbstractController
         $master = $this->getDoctrine()->
         getRepository(Master::class)->
         findAll();
+        
         return $this->render('master/index.html.twig', [
             'masters' => $master,
         ]);
@@ -75,6 +76,10 @@ class MasterController extends AbstractController
         $master = $this->getDoctrine()->
         getRepository(Master::class)->
         find($id);
+
+         if ($master->getOutfits()->count() > 0){
+            return new Response ("Istrinti negalima, nes sis dizaineris turi kuriamu drabuziu");
+        }
 
         $enitytManager = $this->getDoctrine()->getManager();
         $enitytManager->remove($master);
